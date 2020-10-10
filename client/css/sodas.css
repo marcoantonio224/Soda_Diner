@@ -1,0 +1,28 @@
+form {
+    width: 50%;
+    margin:0px auto;
+}
+
+input {
+    margin-bottom: 1%!important;
+}
+
+.logo {
+    width: 10%;
+}
+
+section {
+    text-align: center;
+}
+
+.sub-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 40%;
+    margin: 0 auto;
+    grid-column-gap: 1em;
+}
+
+.add-btn {
+    margin-top: 1%;
+}
