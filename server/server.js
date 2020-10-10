@@ -15,7 +15,6 @@ app.use(express.urlencoded({extended:false}));
 app.use(routes);
 // Set the Port of our Application
 const PORT = process.env.PORT || 3000
-
 // Launch app to PORT 
 app.listen(PORT,()=>{
     console.log(`Server is up on ${PORT}`);
