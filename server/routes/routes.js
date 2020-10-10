@@ -2,25 +2,39 @@ const express = require('express');
 const router = express.Router();
 const path = require("path");
 
-// Grab our Soda controllers 
-// const SodaController = require('../controllers/soda_controllers');
-// Grab our Diner controllers
-// const DinerController = require('../controllers/diner_controllers');
+// Grab Soda model & controllers 
+const Soda = require('../models/Soda');
+const SodaController = require('../controllers/soda_controller');
 
-// Home page
-router.get('/', function(req, res) {
+// Grab Diner modal & controllers
+const Diner = require('../models/Diner');
+const DinerController = require('../controllers/diner_controller');
+
+/*                   Home Page                      */
+
+router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + 'index.html'));
 });
 
-// // Soda Routes
-// router.get(`/sodas`, SodaController.getSodas);
-// router.get(`/sodas/new`, (req, res) => res.render('sodaForm') );
-// router.get(`/sodas/new/:sodaId`, SodaController.getSoda);
-// router.post(`/sodas/new`, SodaController.create);
+/*                   Soda Page                      */
+// Get All Sodas
+router.get('/sodas', SodaController.getSodas);
+// Get Soda Details
+router.get('/soda/:id', SodaController.getSoda);
+// Create a soda
+router.post('/soda', SodaController.create);
+// Delete a Soda
+router.delete('/soda/:id', SodaController.delete);
 
-// // Diner Routes
-// router.get("/diners", (req, res) => res.render('diners') );
-// router.get("/diners/new", (req, res) => res.render('newDiner') );
-// router.post('/diners/new', DinerController.create)
+/*                   Diner Page                      */
+// Get All Diners
+router.get('/diners', DinerController.getDiners);
+// Get Diner Details
+router.get('/diner/:id', DinerController.getDiner);
+// Create a diner
+router.post('/diner', DinerController.create);
+// Delete a Diner
+router.delete('/diner/:id', DinerController.delete);
 
+// Export router
 module.exports = router;

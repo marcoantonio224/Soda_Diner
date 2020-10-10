@@ -1,14 +1,14 @@
 // Dependencies
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const sodaSchema = require('./Soda.js');
 
 // Define the Diner Schema
 const Diner = new Schema(
     {
         name: {type: String, required:true},
         location: {type: String, required: true},
-        sodas: [sodaSchema]
+        // Populate Sodas in this array
+        sodas: [{type: Schema.Types.ObjectId, ref:'Soda'}]
     }
 );
 
