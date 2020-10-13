@@ -7,11 +7,13 @@ module.exports = {
     create(req, res, next) {
         // Parse the request body from client
         const dinerProps = req.body;
+        console.log(dinerProps)
         Diner.create(dinerProps)
             // Return the new soda id to client response
-            .then(diner => res.json({ diner: diner }))
+            .then(diner => res.json({ diner: diner })
             // Catch error if fails and go to next request
-            .catch(err => res.json({message:"Oops, something went wrong!", err: err}));            
+            .catch(err => {
+                res.json({message:"Oops, something went wrong!", err: err})});            
     },
     // Get all sodas
     getDiners(req, res, next) {

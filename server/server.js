@@ -8,8 +8,8 @@ const app = express();
 
 // Use client folder to render for client side
 app.use(express.static(path.join(__dirname, '../client')));
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+// change extended option to true it will refrain from turning it to a json
+app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json())
 // Declare our routes from routes.js file
