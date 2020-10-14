@@ -21,15 +21,13 @@
         <section>
             <h1>New Diner</h1>
             <hr />
-            <form>
+            <form id="diner-form">
                 <label>Name</label>
                 <input class="form-control" type="text" name="name" />
                 <label>Location</label>
-                <input class="form-control" type="text" min="0" max="10" name="brand" />
+                <input class="form-control" type="text" min="0" max="10" name="location" />
                 <label>Sodas</label>
-                <select class="form-control select-input" multiple>
-                    <option>Pepsi</option>
-                    <option>Coke</option>
+                <select id="sodas-container" class="form-control select-input" name="sodas" multiple>
                 </select>
                 <button class="btn btn-secondary add-btn">Add Soda</button>
             </form>
@@ -37,5 +35,6 @@
         </section>
         <script src="https://cdn.tlm.cloud/jquery/3.3.1/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
         <script src="https://cdn.tlm.cloud/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="../js/api/diner.js"></script>
     </body>
 </html>
