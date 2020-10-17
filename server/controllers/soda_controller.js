@@ -7,6 +7,7 @@ module.exports = {
     create(req, res, next) {
         // Parse the request body from client
         const sodaProps = req.body;
+        console.log(sodaProps)
         // Create the soda
         Soda.create(sodaProps)
             // Return the new soda id to client response
