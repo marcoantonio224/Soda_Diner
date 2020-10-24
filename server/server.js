@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-// Use client folder to render for client side
+// Use client folder to render all pages from client side
 app.use(express.static(path.join(__dirname, '../client')));
 // change extended option to true it will refrain from turning it to a json
 app.use(bodyParser.urlencoded({ extended: true }))
