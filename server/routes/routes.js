@@ -19,10 +19,14 @@ router.get('/', (req, res) => {
 /*                   Soda Page                      */
 // Get All Sodas
 router.get('/sodas', SodaController.getSodas);
+// Get only sodas that are being server
+router.get('/sodas/serving', SodaController.getServingSodas);
+// Update server 
+router.put('/soda/updateSoda/:id', SodaController.serving_soda);
 // Get Soda Details
 router.get('/soda/:id', SodaController.getSoda);
 // Create a soda
-router.post('/soda', SodaController.create);
+router.post('/sodas', SodaController.create);
 // Delete a Soda
 router.delete('/soda/:id', SodaController.delete);
 
