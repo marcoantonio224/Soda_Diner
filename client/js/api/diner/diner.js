@@ -10,7 +10,7 @@
     // Declare api server for creating new diner
     const apiServerDiner = "http://localhost:3000/diner";
     // Declare api server for requesting sodas
-    const apiServerSoda = "http://localhost:3000/sodas";
+    const apiServerSoda = "http://localhost:3000/sodas/serving";
     // Get the sodas for soda form
     function getSodas() {
         // Get sodas
@@ -27,9 +27,12 @@
     getSodas();
 
     // Function render soda elements
-    function renderOptionElements(data) {
+    function renderOptionElements({sodas}) {
+        if(sodas.length === 0) return $sodasContainer.replaceWith(`
+           <h4> There are no sodas being served at the moment </h4>
+        `)
         // Loop thru the data
-        for(let obj of data.sodas) {
+        for(let obj of sodas) {
             // Append the options for select box
             $sodasContainer.append(`
                 <option value=${obj._id}> ${obj.name} </option>
@@ -47,8 +50,9 @@
         .done(res => {
             // Render option elements for soda
             renderDiners(res);
-        })
+        });
     }
+    
     // Render diners on page
     function renderDiners({diners}) {
         const $sodaDiv = $('#diners');
@@ -67,7 +71,7 @@
 
     // Call getDiners
     getDiners();
-    
+
     // Attach event handler to form
     $form.submit((e) => {
         e.preventDefault();

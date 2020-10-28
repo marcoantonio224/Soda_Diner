@@ -1,3 +1,4 @@
+
 (function() { // Immediately invoke function
     // Get Soda form
     const $form = $('#soda-form');
@@ -17,23 +18,35 @@
     }
     // Call api sodas
     getSodas();
-
    // Render sodas from the ajax request
    function renderSodas({sodas}) {
-       const $sodaDiv = $('#sodas');
+      const $sodaDiv = $('#sodas');
+       // Check to see if there are any sodas
+       if(sodas.length === 0) return $sodaDiv.append('<h3>There are no sodas</h3>');
        // Loop through the sodas array 
         sodas.map((soda, idx) => {
             // Append new elements under sodas' container
             $sodaDiv.append(`
                 <div id=${soda._id}>
                     <h5>
-                        <a class="soda-link" href="/soda/${soda._id}">${soda.name}</a>
+                        <a class="soda-link" 
+                            href="./soda.html">${soda.name}</a>
                     </h5>
                 </div>
             `);
         });
+        // Get each soda from the soda's container
+        const children = $sodaDiv.children();
+        // Loop thru the elements inside sodaDiv
+        for(let child of children) {
+            // Assign a function for each one to create unique
+            // cookie for particular soda
+            child.onclick = function() {
+                // Create a document cookie for soda's id
+                document.cookie = `soda=${this.id}`;
+            }
+        }
    }
-
     // Attach event handler to form
     $form.submit((e) => {
         e.preventDefault();
@@ -51,12 +64,14 @@
         // Make an ajax post request to server and send
         // the data from the form object
         $.ajax({
-            type:"POST",
+            type:"POST", 
             url: apiServerSoda,
             data: data
         })
         .done(msg => {
             alert('Successfully saved!');
-        })
+            window.location = './sodas.html';
+        });
     });
+     
 })();

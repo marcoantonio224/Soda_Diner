@@ -1,3 +1,7 @@
+section {
+    padding: 2%;
+}
+
 form {
     width: 50%;
     margin:0px auto;
@@ -29,4 +33,35 @@ section {
 
 .soda-link {
     color: black;
+}
+
+.name-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr;
+    padding: 1%;
+    background-color: #80808040;
+    border-radius: 4px;
+}
+
+#brand {
+    color:#808080e3;
+}
+
+.deleteBtn {
+    width: 25%;
+    margin-left: 74%;
+}
+
+.commentForm {
+    width: 50%!important;
+}
+
+.comments {
+    background-color:#dfdfdf;
+    border-radius: 4px;
+    padding: 1%;
+}
+
+.info > p{
+    text-align: left;
 }
