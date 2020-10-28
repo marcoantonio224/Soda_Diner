@@ -4,14 +4,14 @@ const database = require('./database/database');
 const routes = require('./routes/routes');
 const path = require('path');
 
+// Create express application
 const app = express();
-
 // Use client folder to render all pages from client side
 app.use(express.static(path.join(__dirname, '../client')));
 // change extended option to true it will refrain from turning it to a json
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 // Declare our routes from routes.js file
 app.use('/', routes);
 // Set the Port of our Application
