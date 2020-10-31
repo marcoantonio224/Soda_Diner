@@ -1,5 +1,6 @@
 //Call Soda model
 const Diner = require('../models/Diner');
+const Soda = require('../models/Soda');
 const path = require('path');
 
 module.exports = {
@@ -33,19 +34,24 @@ module.exports = {
                 const dinerObj = {
                     _id: diner._id,
                     name: diner.name,
-                    brand: diner.brand
+                    location: diner.location,
+                    sodas: diner.sodas
                 }
-                res.json({ diner: dinerObj })
+                res.json({ diner: dinerObj });
         })
         // Catch error if fails and go to next request
         .catch(err => next(err))
+    },
+    getSodas(req, res, next) {
+        const sodas = req.headers.sodas.split(',');
+        console.log(sodas)
     },
     // Delete Soda
     delete(req, res, next) {
         // Grab the soda by the sodaId parameter from url browser
         const { id } = req.params;
         // Find soda by Id
-        Soda.findOneAndDelete({ _id: id })
+        Diner.findOneAndDelete({ _id: id })
             .then(diner => {
                 res.json({ diner: diner._id })
         })

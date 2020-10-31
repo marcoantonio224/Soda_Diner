@@ -39,7 +39,6 @@
             `);
         }
     }
-
     // Request all diners from server
     function getDiners() {
         // Get sodas
@@ -55,20 +54,33 @@
     
     // Render diners on page
     function renderDiners({diners}) {
-        const $sodaDiv = $('#diners');
+        const $dinerDiv = $('#diners');
+        // Check to see if there are any sodas
+        if(diners.length === 0) return $dinerDiv.append('<h3>There are no diners</h3>');
         // Loop through the sodas array 
          diners.map((diner, idx) => {
              // Append new elements under sodas' container
-             $sodaDiv.append(`
+             $dinerDiv.append(`
                  <div id=${diner._id}>
                      <h5>
-                         <a class="diner-link" href="/diner/${diner._id}">${diner.name}</a>
+                         <a class="diner-link"
+                             href="./diner.html">${diner.name}</a>
                      </h5>
                  </div>
              `);
          });
+        // Get each soda from the soda's container
+        const children = $dinerDiv.children();
+        // Loop thru the elements inside sodaDiv
+        for(let child of children) {
+            // Assign a function for each one to create unique
+            // cookie for particular soda
+            child.onclick = function() {
+                // Create a document cookie for soda's id
+                document.cookie = `diner=${this.id}`;
+            }
+        }
     }
-
     // Call getDiners
     getDiners();
 
@@ -96,6 +108,7 @@
         .done(msg => {
             console.log(msg)
             alert('Successfully saved!');
+            window.location ='./diners.html';
         })
     });
 })();

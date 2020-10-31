@@ -12,6 +12,7 @@
             url: apiServerSoda
         })
         .done(res => {
+            console.log(res)
             // Render option elements for soda
             renderSodas(res);
         })

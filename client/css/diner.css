@@ -35,3 +35,14 @@ section {
 .diner-link {
     color: black;
 }
+
+.location-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #80808040;
+    padding: 1%;
+}
+
+.deleteBtn {
+    width: 35%!important;
+}
