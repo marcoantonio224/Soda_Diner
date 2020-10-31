@@ -30,16 +30,16 @@
         const $title = $('#title');
         const $name = $('#name');
         const $location = $('#location');
-        const $sodas = $('#sodas');
         renderDinerSodas(sodas);
         // Assign these elements with the values from the soda object
         $title.text(name);
         $name.text(name);
         $location.text(location);
-        $sodas.text(sodas);
     }
     // Render the sodas that are being served in this diner
     const renderDinerSodas = (sodas) => {
+        const $sodas = $('#sodas');
+
         $.ajax({
             type: "GET",
             headers:{
@@ -48,9 +48,20 @@
             url: sodasApi
         })
         .done( res => {
-            console.log(res)
+            renderUISodas(res);
         })
         .catch(err => console.log(err));        
+    }
+
+    function renderUISodas ({sodas}) {
+        const $sodaDiv = $('#sodas');
+        console.log($sodaDiv)
+        if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
+        sodas.map(soda=>{
+            $sodaDiv.append(`
+                <h6>${soda.name}</h6>
+            `)
+        })
     }
 
     // Delete soda

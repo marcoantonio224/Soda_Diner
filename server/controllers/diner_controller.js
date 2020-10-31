@@ -43,8 +43,21 @@ module.exports = {
         .catch(err => next(err))
     },
     getSodas(req, res, next) {
+        // Get the array of sodas from header
         const sodas = req.headers.sodas.split(',');
-        console.log(sodas)
+        // Loop for each soda
+        for(let  i = 0; i < sodas.length; i++) {
+            const soda = sodas[i];
+            Soda.find({})
+                .then(sodas => {
+                    // Filter out any soda that's not in the array
+                    let results = sodas.filter(soda => soda._id !== soda);
+                    // Detect if the iteration has ended and return sodas to client
+                    if(i === sodas.length - 1) return res.json({ sodas: results });
+                })
+                .catch(err => next(err));
+
+        }
     },
     // Delete Soda
     delete(req, res, next) {
