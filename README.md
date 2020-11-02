@@ -4,7 +4,7 @@ Welcome to Thirsty Mongoose! Feeling thirsty? Craving a soda ? Feel free to expl
 Thirsty Mongoose to see if they are serving your favorite soda in your local diners! 
 This application was designed to add, delete, and serve sodas inside a diner near you. 
 The purpose of this project was to provide an exemplar of the requirements to the student 
-under The Last Mile curriculum.
+under The Last Mile curriculum. It was designed with the following technologies: [HTML, CSS, JavaScript, Express, Node.js]
 
 ## Installation
 In order to get this project up and running, please go into the server file and 
@@ -15,9 +15,16 @@ by the following commands via CLI:
 <br />
 The following commands will install the node modules to get this app up and running.
 
+## Database
+This application was configured with Mongodb with Mongoose Schema. To get the database
+up and running type in the following via terminal:
+`mongodb`
+Once inside mongo, you can see the database via terminal: `use sodaDiner`
+Then you can see the collections by typing: `show collections`
+
+
 ## Up and Running
-Once your node modules are installed this application can get started, inside the server 
-directory via CLI, type in: 
+Once your node modules are installed this application can get started, inside the server directory via the terminal type in: 
 <br />
 `npm start`
 <br />
@@ -54,4 +61,5 @@ create a new soda, which is saved into the database.
 Inside `diner.html`, the user is able to see the full details of the diner. The user can also delete the diner on this page.
 
 
-///add a database walk through and configuration (what technologies used to build this app)
+## Authors
+The Last Mile 
