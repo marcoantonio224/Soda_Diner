@@ -52,6 +52,16 @@ module.exports = {
             // Catch error if fails and go to next request
             .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     },
+    updateSoda(req, res, next) {
+        const { id } = req.params;
+        const {name, brand, fizziness, taste_rating} = req.body;
+        // Update the soda 
+        Soda.update({_id: id}, [
+            { $set : { name: name, brand: brand, fizziness: fizziness, taste_rating: taste_rating } }
+        ], { multi: true })
+        .then(soda=> res.status(200).json({message:"Soda updated successfully"}))
+        .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
+    },
     serving_soda(req, res, next) {
         // Get soda id from parameter
         const { id } = req.params;

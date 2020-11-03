@@ -61,16 +61,12 @@ section {
 
 .name-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 4fr;
+    grid-template-columns: 1fr 1fr;
     padding: 1%;
     background-color: #80808040;
     border-radius: 4px;
+    text-align: left;
 }
-
-#brand {
-    color:#808080e3;
-}
-
 .deleteBtn {
     width: 25%;
     margin-left: 74%;
@@ -86,6 +82,15 @@ section {
     padding: 1%;
 }
 
+.info {
+    text-align: left;
+}
+
 .info > p{
     text-align: left;
+}
+
+.edit-input{
+    width: 20vw;
+    border: 1px solid #dbdbdb;
 }

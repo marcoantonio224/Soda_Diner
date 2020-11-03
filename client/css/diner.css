@@ -67,5 +67,20 @@ section {
 }
 
 .deleteBtn {
-    width: 35%!important;
+    width: 25%;
+    margin-left: 75%;
+    height: 8vh;
+}
+
+.info {
+    text-align: left;
+}
+
+#name {
+    text-align: left;
+}
+
+.edit-input{
+    width: 20vw;
+    border: 1px solid #dbdbdb;
 }

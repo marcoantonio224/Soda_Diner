@@ -59,7 +59,7 @@
         if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
         sodas.map(soda=>{
             $sodaDiv.append(`
-                <h6>${soda.name}</h6>
+                <li>${soda.name}</li>
             `)
         })
     }
@@ -71,8 +71,8 @@
             url: dinerApi
         })
         .done( res => {
-            alert("Diner successfully deleted!")
-            window.location = './diners.html'
+            alert("Diner successfully deleted!");
+            window.location = './diners.html';
         })
         .catch(err => alert('Oops, something went wrong!')); 
     }

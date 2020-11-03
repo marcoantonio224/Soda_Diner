@@ -21,10 +21,12 @@ router.get('/', (req, res) => {
 router.get('/sodas', SodaController.getSodas);
 // Get only sodas that are being server
 router.get('/sodas/serving', SodaController.getServingSodas);
-// Update server 
-router.put('/soda/updateSoda/:id', SodaController.serving_soda);
 // Get Soda Details
 router.get('/soda/:id', SodaController.getSoda);
+// Update soda's details
+router.put('/soda/:id', SodaController.updateSoda);
+// Update serving details for soda 
+router.put('/soda/updateSoda/:id', SodaController.serving_soda);
 // Create a soda
 router.post('/sodas', SodaController.create);
 // Delete a Soda
@@ -37,6 +39,8 @@ router.get('/diners', DinerController.getDiners);
 router.get('/diner/:id', DinerController.getDiner);
 // Get the sodas for diner
 router.get('/diner/sodas/info', DinerController.getSodas);
+// Update Diner Details
+router.put('/diner/:id', DinerController.updateDiner);
 // Create a diner
 router.post('/diner', DinerController.create);
 // Delete a Diner
