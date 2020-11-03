@@ -39,7 +39,6 @@
     // Render the sodas that are being served in this diner
     const renderDinerSodas = (sodas) => {
         const $sodas = $('#sodas');
-
         $.ajax({
             type: "GET",
             headers:{
@@ -48,6 +47,7 @@
             url: sodasApi
         })
         .done( res => {
+            console.log(res)
             renderUISodas(res);
         })
         .catch(err => console.log(err));        
@@ -55,7 +55,7 @@
 
     function renderUISodas ({sodas}) {
         const $sodaDiv = $('#sodas');
-        console.log($sodaDiv)
+        console.log(sodas)
         if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
         sodas.map(soda=>{
             $sodaDiv.append(`
@@ -74,7 +74,7 @@
             alert("Diner successfully deleted!")
             window.location = './diners.html'
         })
-        .catch(err => console.log(err)); 
+        .catch(err => alert('Oops, something went wrong!')); 
     }
 
     // Add event listener to delete soda button

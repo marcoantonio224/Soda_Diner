@@ -44,19 +44,20 @@ module.exports = {
     },
     getSodas(req, res, next) {
         // Get the array of sodas from header
-        const sodas = req.headers.sodas.split(',');
+        const sodasArr = req.headers.sodas.split(',');
+        // Declare results array for sodas to be sent back to client
+        let results = [];
         // Loop for each soda
-        for(let  i = 0; i < sodas.length; i++) {
-            const soda = sodas[i];
+        for(let  i = 0; i < sodasArr.length; i++) {
             Soda.find({})
                 .then(sodas => {
                     // Filter out any soda that's not in the array
-                    let results = sodas.filter(soda => soda._id !== soda);
+                    // Convert the value of the object from soda to a string and compare
+                    sodas.map(soda => (soda._id.toString() === sodasArr[i]) ? results.push(soda): '');
                     // Detect if the iteration has ended and return sodas to client
-                    if(i === sodas.length - 1) return res.json({ sodas: results });
+                    if(i === sodasArr.length - 1) return res.json({ sodas: results });
                 })
-                .catch(err => next(err));
-
+                .catch(err => console.log(err));
         }
     },
     // Delete Soda
