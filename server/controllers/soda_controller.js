@@ -10,7 +10,7 @@ module.exports = {
         // Create the soda
         Soda.create(sodaProps)
             // Return the new soda id to client response
-            .then(soda => res.json({ soda: soda }))
+            .then(soda => res.status(200).json({ soda: soda }))
             // Catch error if fails and go to next request
             .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
         },
@@ -19,7 +19,7 @@ module.exports = {
         // Get all sodas
         Soda.find({})
             // Pass the sodas back to client
-            .then(sodas => res.json({ sodas: sodas }))
+            .then(sodas => res.status(200).json({ sodas: sodas }))
             // Catch error if fails and go to next request
             .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
         },
@@ -39,7 +39,7 @@ module.exports = {
                     served: soda.is_serving
                 }
             // Send soda back to user
-            res.json({ soda: sodaObj });
+            res.status(200).json({ soda: sodaObj });
         })
         // Catch error if fails and go to next request
         .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
@@ -48,7 +48,7 @@ module.exports = {
         // Get all sodas
         Soda.find({is_serving:true})
             // Pass the sodas back to client
-            .then(sodas => res.json({ sodas: sodas }))
+            .then(sodas => res.status(200).json({ sodas: sodas }))
             // Catch error if fails and go to next request
             .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     },
@@ -81,7 +81,7 @@ module.exports = {
         // Find soda by Id
         Soda.findOneAndDelete({ _id: id })
             .then(soda => {
-                res.json({ soda: soda._id })
+                res.status(200).json({ soda: soda._id })
         })
         // Catch error if fails and go to next request
         .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))

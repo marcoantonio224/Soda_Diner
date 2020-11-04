@@ -72,7 +72,8 @@
         .done(msg => {
             alert('Successfully saved!');
             window.location = './sodas.html';
-        });
+        })
+        .catch(err => alert('Oops, something went wrong! Make sure to fill out all fields in the form.'))
     });
      
 })();

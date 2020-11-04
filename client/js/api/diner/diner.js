@@ -22,6 +22,7 @@
             // Render option elements for soda
             renderOptionElements(res);
         })
+        .catch(err => console.log(err,'Something went wrong fetching sodas'));
     }
     // Call api sodas
     getSodas();
@@ -35,10 +36,13 @@
         for(let obj of sodas) {
             // Append the options for select box
             $sodasContainer.append(`
+
                 <option value=${obj._id}> ${obj.name} </option>
-            `);
+            
+                `);
         }
     }
+
     // Request all diners from server
     function getDiners() {
         // Get sodas
@@ -81,7 +85,8 @@
             }
         }
     }
-    // Call getDiners
+
+    // Call diners
     getDiners();
 
     // Attach event handler to form
@@ -105,10 +110,11 @@
             url: apiServerDiner,
             data: data
         })
-        .done(msg => {
-            console.log(msg)
+        .done(res => {
+            console.log(res)
             alert('Successfully saved!');
             window.location ='./diners.html';
         })
+        .catch(err => alert('Oops, something went wrong! Make sure to fill out all fields in the form.'))
     });
 })();

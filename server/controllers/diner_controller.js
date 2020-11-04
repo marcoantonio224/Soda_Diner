@@ -11,18 +11,18 @@ module.exports = {
         // Save the diner
         Diner.create(dinerProps)
             // Return the new soda id to client response
-            .then(diner => res.json({ diner: diner }))
+            .then(diner => res.status(200).json({ diner: diner }))
             // Catch error if fails and go to next request
-            .catch(err => res.json({message:"Oops, something went wrong!", err: err}));            
+            .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}));            
     },
     // Get all sodas
     getDiners(req, res, next) {
         // Get all sodas
         Diner.find({})
             // Pass the sodas back to client
-            .then(diners => res.json({ diners: diners }))
+            .then(diners => res.status(200).json({ diners: diners }))
             // Catch error if fails and go to next request
-            .catch(err => res.json({message:"Oops, something went wrong!", err: err}))
+            .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     },
     // Get the details of a soda
     getDiner(req, res, next) {
@@ -37,10 +37,10 @@ module.exports = {
                     location: diner.location,
                     sodas: diner.sodas
                 }
-                res.json({ diner: dinerObj });
+                res.status(200).json({ diner: dinerObj });
         })
         // Catch error if fails and go to next request
-        .catch(err => next(err))
+        .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     },
     // Get sodas for diner's details
     getSodas(req, res, next) {
@@ -56,7 +56,7 @@ module.exports = {
                     // Convert the value of the object from soda to a string and compare
                     sodas.map(soda => (soda._id.toString() === sodasArr[i]) ? results.push(soda): '');
                     // Detect if the iteration has ended and return sodas to client
-                    if(i === sodasArr.length - 1) return res.json({ sodas: results });
+                    if(i === sodasArr.length - 1) return res.status(200).json({ sodas: results });
                 })
                 .catch(err => console.log(err));
         }
@@ -80,6 +80,6 @@ module.exports = {
                 res.json({ diner: diner._id })
         })
         // Catch error if fails and go to next request
-        .catch(err => next(err))
+        .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     }
 }
