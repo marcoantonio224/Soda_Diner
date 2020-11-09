@@ -6,6 +6,7 @@
                    .split('; ')
                    .find(cookie => cookie.startsWith('diner'))
                    .split('=')[1];   
+    
     // Api for editing diner according to its ID
     const dinerApi = "http://localhost:3000/diner/"+dinerID;
     // Button for editing
@@ -58,4 +59,3 @@
     }
 
   })();
-  

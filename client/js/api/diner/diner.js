@@ -24,6 +24,7 @@
         })
         .catch(err => console.log(err,'Something went wrong fetching sodas'));
     }
+    
     // Call api sodas
     getSodas();
 

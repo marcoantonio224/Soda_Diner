@@ -7,7 +7,7 @@ The purpose of this project was to provide an exemplar of the requirements to th
 under The Last Mile curriculum. It was designed with the following technologies: [HTML, CSS, JavaScript, Express, Node.js]
 
 ## Installation
-In order to get this project up and running, please go into the server file and 
+In order to get this project up and running, please go into the server directory and 
 download all modules appropriately from package.json file. This can be accomplished
 by the following commands via CLI: 
 <br />

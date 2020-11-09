@@ -88,6 +88,8 @@ section {
 .bottom-container {
     background-color: #80808040;
     padding: 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .bottom-container > button {
