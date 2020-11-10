@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 // Define the Diner Schema
 const Diner = new Schema(
     {
-        name: { type: String, required:true },
+        name: { type: String, required:true, unique: true },
         location: { type: String, required: true },
         // Populate Sodas in this array
-        sodas: [{ type: Schema.Types.ObjectId, ref:'Soda', unique:true }]
+        sodas: [{ type: Schema.Types.ObjectId, ref:'Soda', default: [] }]
     }
 );
 

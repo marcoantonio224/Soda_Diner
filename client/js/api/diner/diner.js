@@ -83,6 +83,7 @@
             child.onclick = function() {
                 // Create a document cookie for soda's id
                 document.cookie = `diner=${this.id}`;
+
             }
         }
     }
@@ -112,7 +113,6 @@
             data: data
         })
         .done(res => {
-            console.log(res)
             alert('Successfully saved!');
             window.location ='./diners.html';
         })

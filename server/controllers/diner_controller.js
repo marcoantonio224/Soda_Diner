@@ -7,7 +7,7 @@ module.exports = {
     // Create a new soda
     create(req, res, next) {
         // Parse the request body from client
-        const dinerProps = req.body;
+        const dinerProps = req.body;        
         // Save the diner
         Diner.create(dinerProps)
             // Return the new soda id to client response
@@ -48,6 +48,7 @@ module.exports = {
         const sodasArr = req.headers.sodas.split(',');
         // Declare results array for sodas to be sent back to client
         let results = [];
+        console.log(req.headers)
         // Loop for each soda
         for(let  i = 0; i < sodasArr.length; i++) {
             Soda.find({})

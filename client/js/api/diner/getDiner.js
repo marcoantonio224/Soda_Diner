@@ -9,7 +9,7 @@
     // Url for diner's information
     const dinerApi = "http://localhost:3000/diner/"+dinerID;
     // Url for soda's information
-    const sodasApi = "http://localhost:3000/diner/sodas/info";
+    const apiServerSoda = "http://localhost:3000/diner/sodas/info";
     // Delete Soda button
     const $deleteBtn = $('#deleteDiner');
     // Make diner ajax request
@@ -44,10 +44,9 @@
             headers:{
                 sodas: sodas
             },
-            url: sodasApi
+            url: apiServerSoda
         })
         .done( res => {
-            console.log(res)
             renderUISodas(res);
         })
         .catch(err => console.log(err));        
@@ -55,7 +54,7 @@
 
     function renderUISodas ({sodas}) {
         const $sodaDiv = $('#sodas');
-        console.log(sodas)
+
         if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
         sodas.map(soda=>{
             $sodaDiv.append(`
@@ -80,5 +79,5 @@
     // Add event listener to delete soda button
     $deleteBtn.on('click', deleteSoda);
 
-  })();
+})();
   

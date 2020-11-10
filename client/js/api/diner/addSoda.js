@@ -1,7 +1,7 @@
-alert()
 (function() { // Immediately invoke function
     // Get browser cookies
     const cookies = document.cookie;
+    console.log(cookies)
     // Parse cookies and get diner's id
     const dinerID = cookies
                    .split('; ')
@@ -10,6 +10,8 @@ alert()
     
     // Api for editing diner according to its ID
     const dinerApi = "http://localhost:3000/diner/"+dinerID;
+    const apiServerSoda = "http://localhost:3000/sodas/serving";
+
     // Make diner ajax request
     $.ajax({
         type: "GET",
@@ -33,6 +35,33 @@ alert()
         $title.text(name);
         $name.text(name);
         $location.text(location);
+    }
+    // Render the sodas that are being served in this diner
+    const renderDinerSodas = (sodas) => {
+        const $sodas = $('#sodas');
+        $.ajax({
+            type: "GET",
+            headers:{
+                sodas: sodas
+            },
+            url: apiServerSoda
+        })
+        .done( res => {
+            console.log(res)
+            renderUISodas(res);
+        })
+        .catch(err => console.log(err));        
+    }
+
+    function renderUISodas ({sodas}) {
+        const $sodaDiv = $('#sodas');
+        console.log(sodas)
+        if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
+        sodas.map(soda=>{
+            $sodaDiv.append(`
+                <li>${soda.name}</li>
+            `)
+        })
     }
 
 })();
