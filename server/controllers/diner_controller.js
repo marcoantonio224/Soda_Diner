@@ -48,14 +48,13 @@ module.exports = {
         const sodasArr = req.headers.sodas.split(',');
         // Declare results array for sodas to be sent back to client
         let results = [];
-        console.log(req.headers)
         // Loop for each soda
         for(let  i = 0; i < sodasArr.length; i++) {
             Soda.find({})
                 .then(sodas => {
                     // Filter out any soda that's not in the array
                     // Convert the value of the object from soda to a string and compare
-                    sodas.map(soda => (soda._id.toString() === sodasArr[i]) ? results.push(soda): '');
+                    sodas.map(soda => (soda._id.toString() === sodasArr[i] && soda.is_serving) ? results.push(soda): '');
                     // Detect if the iteration has ended and return sodas to client
                     if(i === sodasArr.length - 1) return res.status(200).json({ sodas: results });
                 })
