@@ -61,14 +61,25 @@ module.exports = {
                 .catch(err => console.log(err));
         }
     },
+
     // Update diner
     updateDiner(req, res, next) {
         const { id } = req.params;
         const { name, location } = req.body;
         // Update diner
-        Diner.update({_id: id}, [ { $set : { name: name, location: location } } ], { multi: true })
+        Diner.update({ _id: id }, [ { $set : { name: name, location: location } } ], { multi: true })
         .then(soda=> res.status(200).json({message:"Diner updated successfully"}))
         .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
+    },
+    updateSodas(req, res, next) {
+        const { sodas } = req.body;
+        const { id } = req.params;
+        // for(let soda of sodas) {
+        //     Diner.update({ _id: id }, { $push: {sodas: soda} })
+        //     .then(soda=> console.log(soda,' updated!'))
+        //     .catch(err => console.log(err))
+        // }
+            
     },
     // Delete Soda
     delete(req, res, next) {

@@ -54,8 +54,9 @@
 
     function renderUISodas ({sodas}) {
         const $sodaDiv = $('#sodas');
-
+        // If no sodas are being served, notify the user
         if(sodas.length === 0) return $sodaDiv.text('No sodas are being served');
+        // Otherwise, render the sodas as an option
         sodas.map(soda=>{
             $sodaDiv.append(`
                 <li>${soda.name}</li>
