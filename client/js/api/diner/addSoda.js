@@ -91,13 +91,15 @@
             data: data
         })
         .done(res => {
-            console.log(res);
+            // Successful response
             alert("Saved sodas to diner");
+            // Return to diner's details page
+            window.location ='./diner.html';
         })
         .catch(err=> alert("Oops, something went wrong updating diner!"))
 
     }
-
+    
     $addSodas.on('click', addSodas);
 
 })();

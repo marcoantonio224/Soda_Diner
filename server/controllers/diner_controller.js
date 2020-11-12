@@ -7,7 +7,8 @@ module.exports = {
     // Create a new soda
     create(req, res, next) {
         // Parse the request body from client
-        const dinerProps = req.body;        
+        const dinerProps = req.body; 
+        console.log(dinerProps)       
         // Save the diner
         Diner.create(dinerProps)
             // Return the new soda id to client response
@@ -67,18 +68,32 @@ module.exports = {
         const { id } = req.params;
         const { name, location } = req.body;
         // Update diner
-        Diner.update({ _id: id }, [ { $set : { name: name, location: location } } ], { multi: true })
+        Diner.updateOne({ _id: id }, [ { $set : { name: name, location: location } } ], { multi: true })
         .then(soda=> res.status(200).json({message:"Diner updated successfully"}))
         .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}))
     },
     updateSodas(req, res, next) {
+        // New sodas to update
         const { sodas } = req.body;
+        // ID for diner
         const { id } = req.params;
-        // for(let soda of sodas) {
-        //     Diner.update({ _id: id }, { $push: {sodas: soda} })
-        //     .then(soda=> console.log(soda,' updated!'))
-        //     .catch(err => console.log(err))
-        // }
+        // Length of new sodas
+        const amountOfSodas = sodas.length - 1;
+        // Loop through the amount of sodas
+        for(let i = 0; i < sodas.length; i++) {
+            // Each soda in array
+            const soda = sodas[i];
+            console.log(soda,'SODaaa')
+            // Update Diner for each soda
+            Diner.updateOne({ _id: id }, { $push: {sodas: soda} },(err, diner) => {
+                // Return update success when end of array
+                if(i === amountOfSodas){
+                    console.log(err)
+                    if(err) return res.status(500).json({message:"Oops, something went wrong!", err: err});
+                    return res.status(200).json({message:"Diner updated sodas successfully"});
+                }
+            })
+        }
             
     },
     // Delete Soda

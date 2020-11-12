@@ -8,7 +8,7 @@ const Diner = new Schema(
         name: { type: String, required:true, unique: true },
         location: { type: String, required: true },
         // Populate Sodas in this array
-        sodas: [{ type: Schema.Types.ObjectId, ref:'Soda', default: [] }]
+        sodas: [{ type: Schema.Types.ObjectId, ref:'Soda' }]
     }
 );
 
