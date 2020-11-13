@@ -47,6 +47,7 @@
             url: apiServerSoda
         })
         .done( res => {
+            // Render the sodas being served by diner
             renderUISodas(res);
         })
         .catch(err => console.log(err));        

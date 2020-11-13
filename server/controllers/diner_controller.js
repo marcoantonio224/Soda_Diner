@@ -49,18 +49,22 @@ module.exports = {
         const sodasArr = req.headers.sodas.split(',');
         // Declare results array for sodas to be sent back to client
         let results = [];
-        // Loop for each soda
-        for(let  i = 0; i < sodasArr.length; i++) {
-            Soda.find({})
-                .then(sodas => {
-                    // Filter out any soda that's not in the array
-                    // Convert the value of the object from soda to a string and compare
-                    sodas.map(soda => (soda._id.toString() === sodasArr[i] && soda.is_serving) ? results.push(soda): '');
-                    // Detect if the iteration has ended and return sodas to client
-                    if(i === sodasArr.length - 1) return res.status(200).json({ sodas: results });
-                })
-                .catch(err => console.log(err));
-        }
+        // Get all sodas
+        Soda.find({})
+            .then(sodas => {
+                // Loop through all sodas to see which are present in diner
+                sodas.map(soda => {
+                    // Check to see if the soda is present in the array of diner sodas
+                    // Check to see if that particular soda is being served as well
+                    if(sodasArr.indexOf(soda._id.toString()) > -1 && soda.is_serving) {
+                        // If true for both conditions, push soda to results array 
+                        results.push(soda);
+                    }
+                });
+                // Return successfull operation for sodas
+                res.status(200).json({ sodas: results });
+            })
+            .catch(err => res.status(500).json({message:"Oops, something went wrong!", err: err}));
     },
 
     // Update diner
