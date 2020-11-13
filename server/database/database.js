@@ -6,7 +6,9 @@ mongoose.connect('mongodb://localhost/sodaDiner',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
+        useCreateIndex: true
+
     }
 );
 

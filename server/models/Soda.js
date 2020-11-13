@@ -14,5 +14,11 @@ const Soda = new Schema(
     }
 );
 
+// Before we remove the soda, perform a cascade of deletion from other models
+Soda.pre('remove', (cb)=>{
+    // Remove all the sodas that are 'referred' in Diners model
+    this.model("Diners").remove({ Soda_Id: this._id }, cb);
+});
+
 // Export the schema
 module.exports = mongoose.model("soda", Soda);

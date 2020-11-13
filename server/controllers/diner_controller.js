@@ -87,7 +87,6 @@ module.exports = {
         for(let i = 0; i < sodas.length; i++) {
             // Each soda in array
             const soda = sodas[i];
-            console.log(soda,'SODaaa')
             // Update Diner for each soda
             Diner.updateOne({ _id: id }, { $push: {sodas: soda} },(err, diner) => {
                 // Return update success when end of array
