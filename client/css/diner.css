@@ -95,3 +95,10 @@ section {
 .bottom-container > button {
     margin: 0 auto;
 }
+
+#sodas > li {
+    margin: 1em 1em;
+    border-bottom: 1px solid #dfdfdf;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+}

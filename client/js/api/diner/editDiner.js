@@ -18,6 +18,8 @@
         // Declare all elements of sodas info
         const $name = $('#name');
         const $location = $('#location');
+        const $sodaCont = $('#sodas');
+        // const sodas
     
         // Get the existing value of the elements
         const nameVal = $name.text();
@@ -28,6 +30,20 @@
             <input name="name" class="edit-input" type='text' value='${nameVal}' />`);
         $location.html(`
             <input name="location" class="edit-input" type='text' value='${locationVal}' />`);
+        // Loop for each soda in container
+        $sodaCont.children().each(function (idx, $child) {
+            // Assign the 'this' to jQuery scope
+            $child = $(this);
+            // Append a delete button for each soda
+            $child.append(`<button class="btn btn-danger deleteSodaBtn">Remove</button>`);
+            // Get the delete soda button for soda
+            const $btn = $(this).children("button");
+            // Add an event listener that removes the li element for soda
+            $btn.on('click', ()=> {
+                // Remove the li element
+                $(this).remove()
+            });
+        }, $(this)); // Bind to jQuery's "this"
         
         //Unbind this button from the previous click fuction
         $(this).unbind();

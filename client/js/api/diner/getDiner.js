@@ -60,7 +60,7 @@
         // Otherwise, render the sodas as an option
         sodas.map(soda=>{
             $sodaDiv.append(`
-                <li>${soda.name}</li>
+                <li id="${soda._id}">${soda.name}</li>
             `)
         })
     }
