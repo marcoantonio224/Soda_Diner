@@ -55,10 +55,18 @@
         // Get input elements for editing/saving new values
         const $name = $('input[name="name"]').val();        
         const $location = $('input[name="location"]').val();
+        const $sodas = $('#sodas').children();
+        const sodaIDs = [];
+
+        for(let $soda of $sodas) {
+            sodaIDs.push($soda.id);
+        }
+        console.log(sodaIDs)
         // Create a new soda object
         const dinerObj = {
             name: $name,
-            location: $location
+            location: $location,
+            sodas: sodaIDs
         }
         // Send a PUT request to update the document in mongo
         $.ajax({
