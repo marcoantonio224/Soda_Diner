@@ -61,15 +61,11 @@ section {
 
 .name-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0fr;
     padding: 1%;
     background-color: #80808040;
     border-radius: 4px;
     text-align: left;
-}
-.deleteBtn {
-    width: 25%;
-    margin-left: 74%;
 }
 
 .commentForm {

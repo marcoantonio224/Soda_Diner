@@ -38,7 +38,7 @@
             // Append the options for select box
             $sodasContainer.append(`
 
-                <option value=${obj._id}> ${obj.name} </option>
+                    <option value=${obj._id}> ${obj.name} </option>
             
                 `);
         }

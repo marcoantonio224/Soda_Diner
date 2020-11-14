@@ -57,11 +57,10 @@
         const $location = $('input[name="location"]').val();
         const $sodas = $('#sodas').children();
         const sodaIDs = [];
-
+        // Push IDs of sodas still being served
         for(let $soda of $sodas) {
             sodaIDs.push($soda.id);
         }
-        console.log(sodaIDs)
         // Create a new soda object
         const dinerObj = {
             name: $name,
