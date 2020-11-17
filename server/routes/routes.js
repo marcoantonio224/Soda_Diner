@@ -37,8 +37,6 @@ router.delete('/soda/:id', SodaController.delete);
 router.get('/diners', DinerController.getDiners);
 // Get Diner Details
 router.get('/diner/:id', DinerController.getDiner);
-// Get the sodas for diner
-router.get('/diner/sodas/info', DinerController.getSodas);
 // Update Diner Details
 router.put('/diner/:id', DinerController.updateDiner);
 // Update sodas for diner

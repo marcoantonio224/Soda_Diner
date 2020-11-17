@@ -19,7 +19,6 @@
         url: dinerApi
     })
     .done(res => {
-        console.log(res,'diner')
         if(!res.diner) {
             $('section').text('Please choose a diner');
         } else {
@@ -54,7 +53,7 @@
             // Get all sodas available to be served
             const servingSodas = res.sodas;
             // Get existing sodas in diner
-            const dinerSodas = window.sodas;
+            const dinerSodas = window.sodas.map(soda => soda._id);
             // Filter out the sodas that already exist in diner from sodas to be served
             let sodasToBeServed = servingSodas.filter(soda => (dinerSodas.indexOf(soda._id) === -1) ? soda : '');
             // Return the sodas to be served to render in the UI
